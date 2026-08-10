@@ -1,4 +1,13 @@
--name: Insatll nginx
- yum:
-  name: nginx
-  state: present
+
+# RHEL/CentOS
+- name: Install Nginx
+  ansible.builtin.yum:
+    name: nginx
+    state: present
+
+# Start and enable
+- name: Start Nginx
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true
