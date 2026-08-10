@@ -1,0 +1,9 @@
+#playbook is list of plays, it should always starts with -
+- name: ping the node
+  host: mongodb
+  #this is list of task/modules/collections
+  tasks:
+  - name: pinging the server
+    # this map
+    ansible.builtin.ping:
+    
