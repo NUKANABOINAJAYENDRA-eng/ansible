@@ -1,13 +1,16 @@
 
-# RHEL/CentOS
-- name: Install Nginx
-  ansible.builtin.yum:
-    name: nginx
-    state: present
+- name: Install and start Nginx
+  hosts: mongodb
+  become: yes
 
-# Start and enable
-- name: Start Nginx
-  ansible.builtin.service:
-    name: nginx
-    state: started
-    enabled: true
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
