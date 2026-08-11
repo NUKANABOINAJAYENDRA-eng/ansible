@@ -4,9 +4,10 @@
   become: yes
   tasks: 
   - name: install packages
-    yum:
-      name: "{{items}}"
-      state: installed
+    ansible.bulitin.yum:
+      name: "{{ item }}"
+      state: present
     loop:
     - nginx
     - postmap
+    - mailx
