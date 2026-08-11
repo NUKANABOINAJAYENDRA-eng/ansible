@@ -1,0 +1,10 @@
+- name: install packages
+  host: localhost 
+  task:
+  - name: print the names
+    ansible.builtin.debug:
+     msg: "hello, world{{item}}"
+    loop: 
+    - jayendra
+    - 22091A0470
+    - Jayendra
