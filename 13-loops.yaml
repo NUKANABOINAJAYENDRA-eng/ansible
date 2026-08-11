@@ -1,6 +1,6 @@
 - name: install packages
   hosts: localhost
-  task:
+  tasks:
   - name: print the names
     ansible.builtin.debug:
      msg: "hello, world{{item}}"
