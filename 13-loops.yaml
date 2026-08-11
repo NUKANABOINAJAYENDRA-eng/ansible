@@ -1,5 +1,5 @@
 - name: install packages
-  host: localhost 
+  hosts: localhost
   task:
   - name: print the names
     ansible.builtin.debug:
