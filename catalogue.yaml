@@ -36,9 +36,14 @@
 
 
 #write this only when directory.stat.exist == 'Flase' othere wise don't use this
-#  - when: directory.stat.exist == 'Flase'
+#  - when: directory.stat.exist == Flase
 #   name: create /app directory
 #   ansible.builtin.file:
 #    path: /app
 #    state: directory
-     
+  
+
+  - name: download catalogue artifact
+    ansible.builtin.get_url:
+     url: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+     dest: /tmp
