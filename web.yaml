@@ -31,8 +31,8 @@
   
   - name: extract web artifact
     ansible.builtin.unarchive:
-     src: /tmp/web.zip
-     dest: /var/www/html/
+     src: /tmp
+     dest: /usr/share/nginx/html/
      remote_src: yes
 
   
