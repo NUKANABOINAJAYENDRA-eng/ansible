@@ -25,8 +25,8 @@
 
   - name: download web artifact
     ansible.builtin.get_url:
-     url: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
-     dest: /tmp
+     url: https://roboshop-builds.s3.amazonaws.com/web.zip
+     dest: /tmp/web.zip
 
   
   - name: extract web artifact
