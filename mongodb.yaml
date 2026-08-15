@@ -5,7 +5,7 @@
   - name: copy mongoDB repo file
     ansible.builtin.copy:
      src: mongodb.repos
-     dest: /etc/yum.repos.d/mongodb-org-4.2.repo
+     dest: /etc/yum.repos.d/mongodb-org-7.0.repo
   - name: clean dnf cache
     ansible.builtin.command: dnf clean all
   - name: install mongoDB package
