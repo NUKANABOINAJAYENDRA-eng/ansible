@@ -29,9 +29,9 @@
      dest: /tmp
 
   
-  - name: extract catalogue artifact
+  - name: extract web artifact
     ansible.builtin.unarchive:
-     src: /tmp/web.zip/
+     src: /tmp/web.zip
      dest: /usr/share/nginx/html/
      remote_src: yes
 
