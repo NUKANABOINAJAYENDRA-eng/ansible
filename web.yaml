@@ -16,9 +16,14 @@
   - name: remove html directory
     ansible.builtin.file:
      path: /usr/share/nginx/html/
-     dest: directory
+     state: absent
 
-  - name: download catalogue artifact
+  - name: create html directory
+    ansible.builtin.file:
+     path: /usr/share/nginx/html/
+     state: directory
+
+  - name: download web artifact
     ansible.builtin.get_url:
      url: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
      dest: /tmp
@@ -26,7 +31,7 @@
   
   - name: extract catalogue artifact
     ansible.builtin.unarchive:
-     src: /tmp/catalogue.zip
+     src: /tmp/web.zip
      dest: /usr/share/nginx/html/
      remote_src: yes
 
