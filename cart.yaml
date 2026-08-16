@@ -54,6 +54,13 @@
     ansible.builtin.get_url:
      url: https://roboshop-builds.s3.amazonaws.com/cart.zip
      dest: /tmp
+  
+
+  - name: Install unzip package
+    ansible.builtin.package:
+     name: unzip
+     state: present
+     become: true
 
   
   - name: extract cart artifact
