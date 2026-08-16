@@ -60,7 +60,7 @@
     ansible.builtin.yum:
      name: unzip
      state: present
-     become: true
+    become: true
 
   
   - name: extract cart artifact
