@@ -75,7 +75,7 @@
   - name: install dependencies
     ansible.builtin.command: npm install
     args: 
-     chdir: /app
+     chdir: /app/cart.service
 
   - name: copy cart service
     ansible.builtin.copy:
