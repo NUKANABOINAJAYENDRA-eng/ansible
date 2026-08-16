@@ -21,12 +21,12 @@
   - when: out.rc != 0
     
   - name: create user roboshop
-   # become: yes #we need sudo access for this task only
+    become: yes #we need sudo access for this task only
     ansible.builtin.user:
      name: roboshop
      state: present
     become: true
-    
+
   - name: Create /app directory if it does not exist
     ansible.builtin.file:
      path: /app
