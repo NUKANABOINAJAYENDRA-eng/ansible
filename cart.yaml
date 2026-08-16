@@ -85,17 +85,18 @@
     become: true
      
 
-  - name: demon reload
+ 
+  - name: Force systemd to reload unit files
     ansible.builtin.systemd_service:
-     daemon_reload: true   # <--- Keep the correct spelling
+     daemon_reload: true
     become: true
-  
 
-  - name: start and enable cart service
+  - name: Start and enable cart service
     ansible.builtin.systemd_service:
      name: cart
-     state: restarted
+     state: started
      enabled: true
     become: true
+
 
  
