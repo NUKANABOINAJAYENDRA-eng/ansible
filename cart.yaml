@@ -84,7 +84,12 @@
 
   - name: demon reload
     ansible.builtin.systemd_service:
-     demon_reload: true
+     name: cart            # <--- Add the name of the service you copied over
+     daemon_reload: true   # <--- Keep the correct spelling
+     state: restarted      # <--- Safely starts/restarts the service with the new configuration
+     enabled: true         # <--- Ensures the service starts up automatically if the server reboots
+    become: true
+
 
   - name: restart cart
     ansible.builtin.service:
