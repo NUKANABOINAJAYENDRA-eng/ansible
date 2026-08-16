@@ -91,12 +91,8 @@
   - name: start and enable cart service
     ansible.builtin.systemd_service:
      name: cart
-     state: started
+     state: restarted
      enabled: true
     become: true
 
-  - name: restart cart
-    ansible.builtin.service:
-     name: cart
-     state: restarted
-     enabled: true
+ 
