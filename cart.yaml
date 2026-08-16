@@ -69,7 +69,7 @@
   - name: extract cart artifact
     ansible.builtin.unarchive:
      src: /tmp/cart.zip
-     dest: /app/cart.service
+     dest: /app
      remote_src: yes
 
   - name: install dependencies
