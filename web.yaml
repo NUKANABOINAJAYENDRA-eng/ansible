@@ -15,12 +15,12 @@
 
   - name: remove html directory
     ansible.builtin.file:
-     path: /usr/share/nginx/html/
+     path: /var/www/html/
      state: absent
 
   - name: create html directory
     ansible.builtin.file:
-     path: /usr/share/nginx/html/
+     path: /var/www/html/
      state: directory
 
   - name: download web artifact
