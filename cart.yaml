@@ -79,7 +79,7 @@
 
   - name: copy cart service
     ansible.builtin.copy:
-     src: /app
+     src: /app/cart/cart.service
      dest: /etc/systemd/system/cart.service
      remote_src: true
     become: true
