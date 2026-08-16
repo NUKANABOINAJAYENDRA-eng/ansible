@@ -57,7 +57,7 @@
   
 
   - name: Install unzip package
-    ansible.builtin.package:
+    ansible.builtin.yum:
      name: unzip
      state: present
      become: true
