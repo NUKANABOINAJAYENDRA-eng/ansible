@@ -18,10 +18,10 @@
     ignore_errors: true
 
 
-  - when: out.rc != 0
+  #- when: out.rc != 0
     
   - name: create user roboshop
-    become: yes #we need sudo access for this task only
+   # become: yes #we need sudo access for this task only
     ansible.builtin.user:
      name: roboshop
      state: present
