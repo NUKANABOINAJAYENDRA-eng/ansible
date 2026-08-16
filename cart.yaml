@@ -76,8 +76,11 @@
 
   - name: copy cart service
     ansible.builtin.copy:
-     src: cart.service
-     dest: /etc/yum.repos.d/mongodb.repos
+     src: /app/cart.service
+     dest: /etc/systemd/system/cart.service
+     remote_src: true
+    become: true
+     
 
   - name: demon reload
     ansible.builtin.systemd:
