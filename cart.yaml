@@ -67,46 +67,36 @@
 
   
   - name: extract cart artifact
-  ansible.builtin.unarchive:
-    src: /tmp/cart.zip
-    dest: /app
-    remote_src: yes
+    ansible.builtin.unarchive:
+     src: /tmp/cart.zip
+     dest: /app
+     remote_src: yes
 
-- name: install dependencies
-  ansible.builtin.command: npm install
-  args:
-    chdir: /app
+  - name: install dependencies
+    ansible.builtin.command: npm install
+    args: 
+     chdir: /app
 
-- name: copy cart service configuration
-  ansible.builtin.copy:
-    dest: /etc/systemd/system/cart.service
-    owner: root
-    group: root
-    mode: '0644'
-    content: |
-      [Unit]
-      Description=Cart Service
-      After=network.target
+  - name: copy cart service
+    ansible.builtin.copy:
+     src: /app/cart/cart.service
+     dest: /etc/systemd/system/cart.service
+     remote_src: true
+    become: true
+     
 
-      [Service]
-      Type=simple
-      User=root
-      WorkingDirectory=/app
-      ExecStart=/usr/bin/npm start
-      Restart=always
+ 
+  - name: Force systemd to reload unit files
+    ansible.builtin.systemd_service:
+     daemon_reload: true
+    become: true
 
-      [Install]
-      WantedBy=multi-user.target
-  become: true
+  - name: Start and enable cart service
+    ansible.builtin.systemd_service:
+     name: cart
+     state: started
+     enabled: true
+    become: true
 
-- name: Force systemd to reload unit files
-  ansible.builtin.systemd_service:
-    daemon_reload: true
-  become: true
 
-- name: Start and enable cart service
-  ansible.builtin.systemd_service:
-    name: cart
-    state: started
-    enabled: true
-  become: true
+ 
