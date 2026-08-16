@@ -69,13 +69,13 @@
   - name: extract cart artifact
     ansible.builtin.unarchive:
      src: /tmp/cart.zip
-     dest: /app
+     dest: /app/cart.service
      remote_src: yes
 
   - name: install dependencies
     ansible.builtin.command: npm install
-    #args: 
-     #chdir: /app
+    args: 
+     chdir: /app
 
   - name: copy cart service
     ansible.builtin.copy:
