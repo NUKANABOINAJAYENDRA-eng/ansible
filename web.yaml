@@ -15,12 +15,12 @@
 
   - name: remove html directory
     ansible.builtin.file:
-     path: /var/www/html/
+     path: /usr/share/nginx/html/
      state: absent
 
   - name: create html directory
     ansible.builtin.file:
-     path: /var/www/html/
+     path: /usr/share/nginx/html/
      state: directory
 
   - name: download web artifact
@@ -38,15 +38,14 @@
   - name: extract web artifact
     ansible.builtin.unarchive:
      src: /tmp/web.zip
-     dest: /var/www/html/
-     remote_src: yes
+     dest: /usr/share/nginx/html/
+    remote_src: yes
 
   
   - name: copy roboshop.conf
     ansible.builtin.copy:
-     src: /var/www/html
+     src: roboshop.conf
      dest: /etc/nginx/default.d/roboshop.conf
-     remote_src: yes
 
   - name: restart nginx
     ansible.builtin.service:
