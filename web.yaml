@@ -44,8 +44,9 @@
   
   - name: copy roboshop.conf
     ansible.builtin.copy:
-     src: roboshop.conf
+     src: /tmp/roboshop.conf
      dest: /etc/nginx/default.d/roboshop.conf
+     remote_src: yes
 
   - name: restart nginx
     ansible.builtin.service:
