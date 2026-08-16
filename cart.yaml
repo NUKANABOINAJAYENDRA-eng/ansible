@@ -84,8 +84,6 @@
 
   - name: demon reload
     ansible.builtin.systemd_service:
-     state: restarted
-     name: cart
      demon_reload: true
 
   - name: restart cart
