@@ -11,7 +11,7 @@
     - gcc
     - python3-devel
 
-
+  
   - name: check roboshop user exist or not
     ansible.builtin.command: id roboshop
     register: out #output is a variable name
@@ -44,6 +44,29 @@
 
   - name: download shhiping and extract
     ansible.builtin.unarchive:
-     src: https://roboshop-builds.s3.amazonaws.com/shipping.zip
+     src: https://roboshop-builds.s3.amazonaws.com/payment.zip
      dest: /app
      remote_src: yes
+
+
+  - name: install dependencies
+    ansible.builtin.command: pip3.6 install -r requirements.txt
+    args:
+     chdir: /app
+
+  - name: copy payment service
+    ansible.builtin.copy:
+     src: payment.service
+     dest: /etc/systemd/system/payment.service
+
+
+  - name: demon reload
+    ansible.builtin.systemd:
+     demon_reload: true
+ 
+
+  - name: restart payment
+    ansible.builtin.service:
+     name: payment
+     state: restarted
+     enabled: true
